@@ -162,8 +162,8 @@ fi
 #################################################################################
 # clean up old files from the log archive directory
 echo "Begin - Removing TARGET BACKUP DIRECTORY and files from ${targetDir}/backUp* older than 60 days" >> ${logFile}
-#find ${targetDir} -mindepth 1 -maxdepth 2 -type d -mtime +60 -print0 | xargs -0 rm -rf
-find ${targetDir} -mindepth 1 -maxdepth 2 -type d -mtime +60 -exec rm -rf {} \;
+#find ${targetDir} -iname "backUP*" -mindepth 1 -maxdepth 2 -type d -mtime +60 -print0 | xargs -0 rm -rf
+find ${targetDir} -iname "backUP*" -mindepth 1 -maxdepth 2 -type d -mtime +60 -exec rm -rf {} \;
 if [ ${?} -ne 0 ]
 then
 	echo "*******ERROR******" >> ${logFile}
@@ -173,8 +173,8 @@ fi
 echo "Completed - Removing TARGET BACKUP DIRECTORY and files from ${targetDir}/backUp* older than 60 days" >> ${logFile}
 
 echo "Begin - Removing TEMP BACKUP DIRECTORY and files from ${tempTargetDir}/backUp* older than 60 days" >> ${logFile}
-#find ${tempTargetDir} -mindepth 1 -maxdepth 2 -type d -mtime +60 -print0 | xargs -0 rm -rf
-find ${tempTargetDir} -mindepth 1 -maxdepth 2 -type d -mtime +60 -exec rm -rf {} \;
+#find ${tempTargetDir} -iname "backUP*" -mindepth 1 -maxdepth 2 -type d -mtime +60 -print0 | xargs -0 rm -rf
+find ${tempTargetDir} -iname "backUP*" -mindepth 1 -maxdepth 2 -type d -mtime +60 -exec rm -rf {} \;
 if [ ${?} -ne 0 ]
 then
 	echo "*******ERROR******" >> ${logFile}
@@ -184,8 +184,8 @@ fi
 echo "Completed - Removing TARGET BACKUP DIRECTORY and files from ${tempTargetDir}/backUp* older than 60 days" >> ${logFile}
 
 echo "Begin - Removing METADATA DIRECTORIES and files from ${rootDir}/envSetup/metaData* older than 30 days" >> ${logFile}
-#find ${rootDir}/envSetup/metaData -mindepth 1 -maxdepth 2 -type d -mtime +30 -print0 | xargs -0 rm -rf
-find ${rootDir}/envSetup/metaData -mindepth 1 -maxdepth 2 -type d -mtime +30 -exec rm -rf {} \;
+#find ${rootDir}/envSetup/metaData -iname "migration*" -mindepth 1 -maxdepth 2 -type d -mtime +30 -print0 | xargs -0 rm -rf
+find ${rootDir}/envSetup/metaData -iname "migration*" -mindepth 1 -maxdepth 2 -type d -mtime +30 -exec rm -rf {} \;
 if [ ${?} -ne 0 ]
 then
 	echo "*******ERROR******" >> ${logFile}
